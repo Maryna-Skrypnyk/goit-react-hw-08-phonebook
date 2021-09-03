@@ -1,14 +1,12 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { contactsOperations, contactsSelectors } from 'redux/contacts';
-// import {
-//   fetchContacts,
-//   deleteContact,
-// } from '../../redux/slices/contacts-slice';
 import PropTypes from 'prop-types';
 
 import IconButton from '../IconButton';
-import { ReactComponent as IconDelete } from '../icons/icon-close-delete.svg';
+import LoaderSpinner from '../LoaderSpinner';
+// import { ReactComponent as IconDelete } from '../icons/icon-close-delete.svg';
+import { HiOutlineTrash } from 'react-icons/hi';
 
 import styles from './ContactList.module.scss';
 
@@ -19,7 +17,7 @@ const ContactItem = ({ name, number, onDeleteContact }) => {
         <span className={styles.ContactName}>{name}:</span> {number}
       </p>
       <IconButton onDeleteContact={onDeleteContact} aria-label="Delete contact">
-        <IconDelete width={15} height={15} />
+        <HiOutlineTrash width={15} height={15} />
       </IconButton>
     </li>
   );
@@ -46,7 +44,7 @@ const ContactList = () => {
 
   return (
     <>
-      {isLoading && <h1>Loading...</h1>}
+      {isLoading && <LoaderSpinner />}
       {contacts.length === 0 && <p>There are no contacts in the list</p>}
       <ul className={styles.ContactList}>
         {contacts.map(({ id, name, number }) => (

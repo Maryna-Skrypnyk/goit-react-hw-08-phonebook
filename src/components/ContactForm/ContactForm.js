@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { contactsSelectors, contactsOperations } from 'redux/contacts';
-
-// import { addContact } from '../../redux/slices/contacts-slice';
+import Button from '../Button';
+import { toast } from 'react-toastify';
 
 import shortid from 'shortid';
 
@@ -38,12 +38,12 @@ function ContactForm() {
     e.preventDefault();
 
     if (contacts.find(contact => contact.name === e.target.name.value)) {
-      alert(`${e.target.name.value} is already in contacts`);
+      toast.warn(`${e.target.name.value} is already in contacts`);
       return;
     }
 
     if (contacts.find(contact => contact.number === e.target.number.value)) {
-      alert(`Number ${e.target.number.value} is already in contacts`);
+      toast.warn(`Number ${e.target.number.value} is already in contacts`);
       return;
     }
 
@@ -51,17 +51,17 @@ function ContactForm() {
       (!name || e.target.name.value.trim() === '') &&
       (!number || e.target.number.value.trim() === '')
     ) {
-      alert('Fill in the fields "Name" and "Number"');
+      toast.warn(`Fill in the fields "Name" and "Number"`);
       return;
     }
 
     if (!name || e.target.name.value.trim() === '') {
-      alert('Field "Name" is empty');
+      toast.warn(`Field "Name" is empty`);
       return;
     }
 
     if (!number || e.target.number.value.trim() === '') {
-      alert('Field "Number" is empty');
+      toast.warn(`Field "Number" is empty`);
       return;
     }
 
@@ -110,9 +110,11 @@ function ContactForm() {
         />
       </label>
 
-      <button type="submit" className={styles.Button}>
+      {/* <button type="submit" className={styles.Button}>
         Add contact
-      </button>
+      </button> */}
+
+      <Button type="submit" contentBtn="Add contact" />
     </form>
   );
 }

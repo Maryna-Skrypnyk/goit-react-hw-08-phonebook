@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { changeFilter } from 'redux/contacts/contacts-actions';
+import { changeFilter } from './contacts-actions';
 
 axios.defaults.baseURL = 'http://localhost:3000';
 
