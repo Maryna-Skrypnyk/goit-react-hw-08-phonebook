@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperations, authSelectors } from 'redux/auth';
 
-import PageHeading from 'components/PageHeading';
+// import PageHeading from 'components/PageHeading';
 import Button from 'components/Button';
 import LoaderSpinner from 'components/LoaderSpinner';
 import { toast } from 'react-toastify';
@@ -59,7 +59,7 @@ export default function LoginView() {
 
   return (
     <div>
-      <PageHeading text="Login page" />
+      {/* <PageHeading text="Login page" /> */}
 
       <form onSubmit={handleSubmit} className={styles.Form} autoComplete="off">
         <label className={styles.Label}>

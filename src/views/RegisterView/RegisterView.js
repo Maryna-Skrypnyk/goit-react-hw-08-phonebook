@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperations, authSelectors } from 'redux/auth';
 
-import PageHeading from 'components/PageHeading';
+// import PageHeading from 'components/PageHeading';
 import Button from 'components/Button';
 import LoaderSpinner from 'components/LoaderSpinner';
 import { toast } from 'react-toastify';
@@ -69,7 +69,7 @@ export default function RegisterView() {
 
   return (
     <div>
-      <PageHeading text="Registration page" />
+      {/* <PageHeading text="Registration page" /> */}
 
       <form onSubmit={handleSubmit} className={styles.Form} autoComplete="off">
         <label className={styles.Label}>

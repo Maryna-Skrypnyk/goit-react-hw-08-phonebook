@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { contactsOperations, contactsSelectors } from 'redux/contacts';
 import PropTypes from 'prop-types';
+import { motion, AnimatePresence } from 'framer-motion';
+import { variants } from '../../variables/motionVariable';
 
 import IconButton from '../IconButton';
 import LoaderSpinner from '../LoaderSpinner';
@@ -12,14 +14,21 @@ import styles from './ContactList.module.scss';
 
 const ContactItem = ({ name, number, onDeleteContact }) => {
   return (
-    <li className={styles.ContactItem}>
+    <motion.li
+      className={styles.ContactItem}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      transition="transition"
+      variants={variants}
+    >
       <p className={styles.Contact}>
         <span className={styles.ContactName}>{name}:</span> {number}
       </p>
       <IconButton onDeleteContact={onDeleteContact} aria-label="Delete contact">
         <HiOutlineTrash width={15} height={15} />
       </IconButton>
-    </li>
+    </motion.li>
   );
 };
 
@@ -45,17 +54,31 @@ const ContactList = () => {
   return (
     <>
       {isLoading && <LoaderSpinner />}
-      {contacts.length === 0 && <p>There are no contacts in the list</p>}
-      <ul className={styles.ContactList}>
-        {contacts.map(({ id, name, number }) => (
-          <ContactItem
-            key={id}
-            name={name}
-            number={number}
-            onDeleteContact={() => onDeleteContact(id)}
-          />
-        ))}
-      </ul>
+      {contacts.length === 0 && (
+        <AnimatePresence>
+          <motion.p
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition="transition"
+            variants={variants}
+          >
+            There are no contacts in the list
+          </motion.p>
+        </AnimatePresence>
+      )}
+      <motion.ul className={styles.ContactList}>
+        <AnimatePresence>
+          {contacts.map(({ id, name, number }) => (
+            <ContactItem
+              key={id}
+              name={name}
+              number={number}
+              onDeleteContact={() => onDeleteContact(id)}
+            />
+          ))}
+        </AnimatePresence>
+      </motion.ul>
     </>
   );
 };
