@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { authSelectors } from '../../redux/auth';
 import phonebookIcon from '../../images/phone-book-2.svg';
 import { motion, AnimatePresence } from 'framer-motion';
-import { variants } from '../../variables/motionVariable';
+import { variantsScale } from '../../variables/motionVariable';
 
 import styles from './HomeView.module.scss';
 
@@ -39,7 +39,7 @@ const HomeView = () => {
           animate="animate"
           exit="exit"
           transition="transition"
-          variants={variants}
+          variants={variantsScale}
           src={phonebookIcon}
           alt="phonebookIcon"
           width="300"

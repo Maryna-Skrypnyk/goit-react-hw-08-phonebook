@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { contactsOperations, contactsSelectors } from 'redux/contacts';
 import PropTypes from 'prop-types';
 import { motion, AnimatePresence } from 'framer-motion';
-import { variants } from '../../variables/motionVariable';
+import { variantsOpacity } from '../../variables/motionVariable';
 
 import IconButton from '../IconButton';
 import LoaderSpinner from '../LoaderSpinner';
@@ -20,7 +20,7 @@ const ContactItem = ({ name, number, onDeleteContact }) => {
       animate="animate"
       exit="exit"
       transition="transition"
-      variants={variants}
+      variants={variantsOpacity}
     >
       <p className={styles.Contact}>
         <span className={styles.ContactName}>{name}:</span> {number}
@@ -61,7 +61,7 @@ const ContactList = () => {
             animate="animate"
             exit="exit"
             transition="transition"
-            variants={variants}
+            variants={variantsOpacity}
           >
             There are no contacts in the list
           </motion.p>

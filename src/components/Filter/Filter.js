@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { changeFilter } from 'redux/contacts/contacts-actions';
 import { contactsSelectors } from 'redux/contacts';
 import { motion, AnimatePresence } from 'framer-motion';
-import { variants } from '../../variables/motionVariable';
+import { variantsOpacity } from '../../variables/motionVariable';
 
 import styles from './Filter.module.scss';
 
@@ -23,7 +23,7 @@ const Filter = () => {
               animate="animate"
               exit="exit"
               transition="transition"
-              variants={variants}
+              variants={variantsOpacity}
               type="text"
               name="name"
               value={value}
