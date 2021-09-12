@@ -48,7 +48,7 @@ export const register = credentials => async dispatch => {
     }
 
     if (error.response.status === 500) {
-      return toast.error('Server error! Try signup again.');
+      return toast.error('Server error! Try signup again later.');
     }
     return toast.error('Something went wrong! Try signup again.');
   }
@@ -135,10 +135,10 @@ export const fetchCurrentUser = () => async (dispatch, getState) => {
 
     if (error.response.status === 401) {
       return toast.error(
-        'Missing header with authorization token! Please try to login or signup',
+        'Missing authorization! Please try to login or signup.',
       );
     }
 
-    return toast.error('Something went wrong! Try again.');
+    return toast.error('Something went wrong! Try again later.');
   }
 };
