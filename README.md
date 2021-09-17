@@ -4,7 +4,7 @@
 
 ⬇ [_Welcome!_](https://mis-myphonebook.netlify.app/) ⬇
 
-<a href="https://mis-myphonebook.netlify.app/"><img src="http://dl3.joxi.net/drive/2021/09/17/0027/0882/1782642/42/f340f6535a.jpg" alt="Phonebook" border="0"></a>
+<a href="https://mis-myphonebook.netlify.app/"><img src="" alt="Phonebook" border="0"></a>
 
 
 
