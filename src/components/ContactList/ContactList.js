@@ -54,7 +54,7 @@ const ContactList = () => {
   return (
     <>
       {isLoading && <LoaderSpinner />}
-      {contacts.length === 0 && (
+      {!contacts.length && (
         <AnimatePresence>
           <motion.p
             initial="initial"
@@ -67,18 +67,21 @@ const ContactList = () => {
           </motion.p>
         </AnimatePresence>
       )}
-      <motion.ul className={styles.ContactList}>
-        <AnimatePresence>
-          {contacts.map(({ id, name, number }) => (
-            <ContactItem
-              key={id}
-              name={name}
-              number={number}
-              onDeleteContact={() => onDeleteContact(id)}
-            />
-          ))}
-        </AnimatePresence>
-      </motion.ul>
+
+      {contacts.length > 0 && (
+        <motion.ul className={styles.ContactList}>
+          <AnimatePresence>
+            {contacts.map(({ id, name, number }) => (
+              <ContactItem
+                key={id}
+                name={name}
+                number={number}
+                onDeleteContact={() => onDeleteContact(id)}
+              />
+            ))}
+          </AnimatePresence>
+        </motion.ul>
+      )}
     </>
   );
 };
