@@ -50,7 +50,7 @@ const filter = createReducer('', {
 
 export default combineReducers({
   items,
+  filter,
   isLoading,
   error,
-  filter,
 });

@@ -39,7 +39,11 @@ ContactItem.propTypes = {
 };
 
 const ContactList = () => {
-  const contacts = useSelector(contactsSelectors.getVisibleContactsSortByName);
+  const contacts = useSelector(contactsSelectors.getContacts);
+  const visibleContacts = useSelector(
+    contactsSelectors.getVisibleContactsSortByName,
+  );
+  const value = useSelector(contactsSelectors.getFilter);
   const isLoading = useSelector(contactsSelectors.getLoading);
   const dispatch = useDispatch();
 
@@ -54,6 +58,22 @@ const ContactList = () => {
   return (
     <>
       {isLoading && <LoaderSpinner />}
+
+      {contacts.length > 0 && (
+        <motion.ul className={styles.ContactList}>
+          <AnimatePresence>
+            {visibleContacts.map(({ id, name, number }) => (
+              <ContactItem
+                key={id}
+                name={name}
+                number={number}
+                onDeleteContact={() => onDeleteContact(id)}
+              />
+            ))}
+          </AnimatePresence>
+        </motion.ul>
+      )}
+
       {!contacts.length && (
         <AnimatePresence>
           <motion.p
@@ -68,19 +88,18 @@ const ContactList = () => {
         </AnimatePresence>
       )}
 
-      {contacts.length > 0 && (
-        <motion.ul className={styles.ContactList}>
-          <AnimatePresence>
-            {contacts.map(({ id, name, number }) => (
-              <ContactItem
-                key={id}
-                name={name}
-                number={number}
-                onDeleteContact={() => onDeleteContact(id)}
-              />
-            ))}
-          </AnimatePresence>
-        </motion.ul>
+      {contacts.length > 0 && !visibleContacts.length && (
+        <AnimatePresence>
+          <motion.p
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition="transition"
+            variants={variantsOpacity}
+          >
+            There are no contacts "{value}" in this list
+          </motion.p>
+        </AnimatePresence>
       )}
     </>
   );
