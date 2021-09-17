@@ -29,7 +29,7 @@ const Filter = () => {
               value={value}
               onChange={event => dispatch(changeFilter(event.target.value))}
               placeholder="Enter name"
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+              pattern="^[a-zA-Zа-яА-ЯёЁіІєЄ]+(([' -][a-zA-Zа-яА-ЯёЁіІєЄ])?[a-zA-Zа-яА-ЯёЁіІєЄ]*)*$"
               title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
               required
               className={styles.Input}
